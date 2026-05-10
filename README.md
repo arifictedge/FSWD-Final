@@ -49,7 +49,7 @@ Create a `.env` file in the `backend/` directory and add the following variables
 
 ```env
 PORT=5000
-MONGODB_URI=mongodb+srv://<username>:<password>@cluster0.mongodb.net/productDB?retryWrites=true&w=majority
+MONGODB_URI=mongodb+srv://arifictedge:admin123@productdb.hi4z8zo.mongodb.net/productDB?retryWrites=true&w=majority
 ```
 
 > **Note**: Replace `<username>` and `<password>` with your actual MongoDB Atlas credentials.
