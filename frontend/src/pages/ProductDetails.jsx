@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import axios from 'axios';
+import { getProductById } from '../api/api';
 import { ArrowLeft } from 'lucide-react';
 
 const ProductDetails = () => {
@@ -11,8 +11,8 @@ const ProductDetails = () => {
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/products/${id}`);
-        setProduct(response.data);
+        const data = await getProductById(id);
+        setProduct(data);
         setLoading(false);
       } catch (error) {
         console.error('Error fetching product:', error);

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import axios from 'axios';
+import { createProducts } from '../api/api';
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
@@ -24,7 +24,7 @@ const AddProduct = () => {
     setLoading(true);
 
     try {
-      await axios.post('http://localhost:5000/products', formData);
+      await createProducts(formData);
       setLoading(false);
       
       // SweetAlert Success Message (Requested in PDF)

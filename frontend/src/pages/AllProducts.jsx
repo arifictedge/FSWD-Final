@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import axios from 'axios';
+import { getAllProducts, deleteProduct } from '../api/api';
 import ProductCard from '../components/ProductCard';
 import Swal from 'sweetalert2';
 
@@ -9,8 +9,8 @@ const AllProducts = () => {
 
   const fetchProducts = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/products');
-      setProducts(response.data);
+      const data = await getAllProducts();
+      setProducts(data);
       setLoading(false);
     } catch (error) {
       console.error('Error fetching products:', error);
@@ -35,7 +35,7 @@ const AllProducts = () => {
 
     if (result.isConfirmed) {
       try {
-        await axios.delete(`http://localhost:5000/products/${id}`);
+        await deleteProduct(id);
         setProducts(products.filter(p => p._id !== id));
         Swal.fire(
           'Deleted!',
